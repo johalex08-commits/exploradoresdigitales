@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exploradores digitales</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    #problema-detalle {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    #problema-detalle.mostrar {
+      display: block !important;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: url('fondo.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+    }
+
+    header {
+      background: rgba(30, 58, 138, 0.85);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    nav {
+      background: rgba(59, 130, 246, 0.9);
+      padding: 1rem;
+      text-align: center;
+      backdrop-filter: blur(5px);
+    }
+
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    nav a:hover {
+      background: #2563eb;
+      transform: scale(1.05);
+    }
+
+    section {
+      display: none;
+      padding: 2rem;
+      max-width: 900px;
+      margin: 2rem auto;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    section.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      color: #1e3a8a;
+      margin-bottom: 1rem;
+    }
+
+    .card {
+      background: white;
+      border-left: 6px solid #3b82f6;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .reto1 {
+      background: #dbeafe;
+      border-left: 6px solid #2563eb;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      border-radius: 10px;
+    }
+
+    footer {
+      background: rgba(30, 58, 138, 0.85);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 3rem;
+    }
+
+    .button {
+      background: #3b82f6;
+      color: white;
+      padding: 0.7rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .button:hover {
+      background: #2563eb;
+      transform: scale(1.05);
+    }
+
+    .respuesta {
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 1rem;
+    }
+
+
+/* SLIDER RECURSOS */
+.slider-recursos{
+  position:relative;
+  max-width:1000px;
+  margin:2rem auto;
+  overflow:hidden;
+  border-radius:16px;
+  box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+.slides-recursos{
+  display:flex;
+  transition:transform .6s ease-in-out;
+}
+
+.slides-recursos img{
+  width:100%;
+  flex-shrink:0;
+}
+
+/* BOTONES */
+.btn-slide{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,.6);
+  color:white;
+  border:none;
+  padding:1rem;
+  font-size:22px;
+  cursor:pointer;
+  border-radius:50%;
+  z-index:10;
+}
+
+.btn-slide.prev{left:10px}
+.btn-slide.next{right:10px}
+
+.btn-slide:hover{
+  background:#3b82f6;
+}
+
+
+
+  </style>
+</head>
+
+
+<body>
+
+  <nav>
+    <a onclick="mostrarSeccion('red')">RED</a>
+    <a onclick="mostrarSeccion('podcast')">Podcast</a>
+    <a onclick="mostrarSeccion('video')">Video</a>
+    <a onclick="mostrarSeccion('graficos')">Gráficos</a>
+    <a onclick="mostrarSeccion('infografia')">Infografía</a>
+    <a onclick="mostrarSeccion('recursos')">Recursos</a>
+  </nav>
+
+  <header>
+  
+  <div class="slider-recursos">
+  <div class="slides-recursos">
+    <img src="img/banner.png" width="1100" height="450" alt="Red">
+    <img src="img/banner2.png" width="1100" height="450" alt="Red">
+    <img src="img/banner3.png" width="1100" height="450" alt="Red">
+    <img src="img/banner4.png" width="1100" height="450" alt="Red">
+  </div>
+
+  <button class="btn-slide prev" onclick="moverSlide(-1)">❮</button>
+  <button class="btn-slide next" onclick="moverSlide(1)">❯</button>
+</div>
+
+
+
+
+
+  </header>
+
+<section id="recursos" class="active">
+    <h2>Mis Recursos</h2>
+  <div class="">
+    
+
+    <table class="tabla-responsive">
+  <tr>
+    <td>
+      <a href="archivos/pedagogiaytic.pdf" target="_blank">
+        <img src="img/red.png" width="428" height="254">
+      </a>
+    </td>
+
+  <td>
+    <img 
+      src="img/videos.png"
+      width="428"
+      height="254"
+      style="cursor:pointer"
+      onclick="abrirVideoLocal('videos/pedagogiaytic.mp4')">
+  </td>
+
+    <td>
+      <img 
+      src="img/podcast.png"
+      width="428"
+      height="254"
+      style="cursor:pointer"
+      onclick="abrirVideoLocal('videos/podcastmotivacion.mp4')">
+    </td>
+
+  </tr>
+
+  <tr>
+    <td>
+      <a href="https://read.bookcreator.com/yqIMjwsG8lT86MvhjCcxEUnI1Gz1/YOmptCBNRy-YuG_aAks86A/la595OlKS1uEzoLEJ4uHIA" target="_blank">
+        <img src="img/infografia.png" width="428" height="254">
+      </a>
+    </td>
+
+    <td>
+      <a href="archivos/graficos.pdf" target="_blank">
+        <img src="img/graficos.png" width="428" height="254">
+      </a>
+    </td>
+
+    <td>
+      <a href="https://www.canva.com/design/DAG3rmXJNno/aYJTbB46_RlEG-VjQ962fQ/edit" target="_blank">
+        <img src="img/recursos.png" width="428" height="254">
+      </a>
+    </td>
+  </tr>
+</table>
+
+
+
+
+
+  </div>
+</section>
+
+  <footer>
+    <p>&copy; 2025 - Exploradores Digitales | Proyecto Educativo Maestria en Recursos Digitales</p>
+  </footer>
+
+
+<!--FUNCIONES JAVA SCRIPT-->
+  <script>
+  function mostrarSeccion(id) {
+    const secciones = document.querySelectorAll('section');
+    secciones.forEach(seccion => {
+      seccion.classList.remove('active');
+    });
+    setTimeout(() => {
+      const seccion = document.getElementById(id);
+      seccion.classList.add('active');
+
+      // Reiniciar vista previa del problema si es la sección problema
+      if (id === 'problema') {
+        const preview = document.getElementById('problema-preview');
+        const detalle = document.getElementById('problema-detalle');
+        preview.style.display = 'block';
+        detalle.classList.remove('mostrar');
+        detalle.style.display = 'none';
+      }
+    }, 100);
+  }
+
+  function mostrarRespuesta() {
+    document.getElementById('respuestaReto1').style.display = 'block';
+  }
+
+  function mostrarContenidoProblema() {
+    const detalle = document.getElementById('problema-detalle');
+    const preview = document.getElementById('problema-preview');
+    preview.style.display = 'none';
+    detalle.classList.add('mostrar');
+  }
+
+function mostrarImagenModal(src) {
+  const modal = document.getElementById('modalImagen');
+  const imagen = document.getElementById('imagenAmpliada');
+  imagen.src = src;
+  modal.style.display = 'flex';
+}
+
+function cerrarModal() {
+  document.getElementById('modalImagen').style.display = 'none';
+}
+
+
+function mostrarVideoModal(src) {
+  const modal = document.getElementById('modalVideo');
+  const video = document.getElementById('videoCamilo');
+  video.src = src;
+  modal.style.display = 'flex';
+  video.play();
+}
+
+function cerrarModalVideo() {
+  const modal = document.getElementById('modalVideo');
+  const video = document.getElementById('videoCamilo');
+  modal.style.display = 'none';
+  video.pause();
+  video.currentTime = 0;
+}
+
+function mostrarVideoYoutube(url) {
+  const contenedor = document.createElement('div');
+  contenedor.id = 'modalYoutube';
+  contenedor.style.position = 'fixed';
+  contenedor.style.top = 0;
+  contenedor.style.left = 0;
+  contenedor.style.width = '100%';
+  contenedor.style.height = '100%';
+  contenedor.style.backgroundColor = 'rgba(0,0,0,0.9)';
+  contenedor.style.zIndex = '10001';
+  contenedor.style.display = 'flex';
+  contenedor.style.justifyContent = 'center';
+  contenedor.style.alignItems = 'center';
+
+  const cerrar = document.createElement('span');
+  cerrar.innerHTML = '&times;';
+  cerrar.style.position = 'absolute';
+  cerrar.style.top = '20px';
+  cerrar.style.right = '30px';
+  cerrar.style.fontSize = '30px';
+  cerrar.style.color = 'white';
+  cerrar.style.cursor = 'pointer';
+  cerrar.onclick = () => document.body.removeChild(contenedor);
+
+  const iframe = document.createElement('iframe');
+  iframe.src = url;
+  iframe.width = '90%';
+  iframe.height = '90%';
+  iframe.allowFullscreen = true;
+  iframe.style.border = 'none';
+  iframe.style.borderRadius = '10px';
+  iframe.style.boxShadow = '0 0 20px white';
+
+  contenedor.appendChild(cerrar);
+  contenedor.appendChild(iframe);
+  document.body.appendChild(contenedor);
+}
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') {
+    const modal = document.getElementById('modalYoutube');
+    if (modal) document.body.removeChild(modal);
+  }
+});
+
+
+let retoVisible = null;
+
+function mostrarReto(id) {
+  const secciones = ['ra1', 'experimental', 'ra2'];
+
+  if (retoVisible === id) {
+    // Si se hace clic en el mismo botón, ocultar
+    document.getElementById(`contenido-${id}`).style.display = 'none';
+    retoVisible = null;
+  } else {
+    // Ocultar todos
+    secciones.forEach(s => {
+      const elem = document.getElementById(`contenido-${s}`);
+      if (elem) elem.style.display = 'none';
+    });
+
+    // Mostrar solo el que se ha clickeado
+    document.getElementById(`contenido-${id}`).style.display = 'block';
+    retoVisible = id;
+  }
+}
+
+function abrirModalVideoDrive(fileId) {
+  const modal = document.createElement('div');
+  modal.id = 'modalDriveFull';
+  modal.style.position = 'fixed';
+  modal.style.top = 0;
+  modal.style.left = 0;
+  modal.style.width = '100%';
+  modal.style.height = '100%';
+  modal.style.backgroundColor = 'rgba(0,0,0,0.95)';
+  modal.style.zIndex = 9999;
+  modal.style.display = 'flex';
+  modal.style.justifyContent = 'center';
+  modal.style.alignItems = 'center';
+  modal.style.flexDirection = 'column';
+
+  const closeBtn = document.createElement('span');
+  closeBtn.innerHTML = '&times;';
+  closeBtn.style.position = 'absolute';
+  closeBtn.style.top = '20px';
+  closeBtn.style.right = '30px';
+  closeBtn.style.fontSize = '40px';
+  closeBtn.style.color = 'white';
+  closeBtn.style.cursor = 'pointer';
+  closeBtn.onclick = () => document.body.removeChild(modal);
+
+  const iframe = document.createElement('iframe');
+  iframe.src = `https://drive.google.com/file/d/${fileId}/preview`;
+  iframe.style.width = '90%';
+  iframe.style.height = '90%';
+  iframe.allowFullscreen = true;
+  iframe.frameBorder = '0';
+  iframe.style.borderRadius = '10px';
+  iframe.style.boxShadow = '0 0 20px white';
+
+  modal.appendChild(closeBtn);
+  modal.appendChild(iframe);
+  document.body.appendChild(modal);
+}
+
+
+
+let indiceSlide=0;
+const slides=document.querySelector('.slides-recursos');
+const totalSlides=document.querySelectorAll('.slides-recursos img').length;
+
+function moverSlide(direccion){
+  indiceSlide+=direccion;
+
+  if(indiceSlide<0) indiceSlide=totalSlides-1;
+  if(indiceSlide>=totalSlides) indiceSlide=0;
+
+  slides.style.transform=`translateX(-${indiceSlide*100}%)`;
+}
+
+/* AUTOPLAY */
+setInterval(()=>{
+  moverSlide(1);
+},4000);
+
+
+function abrirVideoLocal(ruta){
+  const modal = document.getElementById('modalVideoLocal');
+  const video = document.getElementById('videoLocal');
+
+  video.src = ruta;
+  modal.style.display = 'flex';
+  video.play();
+}
+
+function cerrarVideoLocal(){
+  const modal = document.getElementById('modalVideoLocal');
+  const video = document.getElementById('videoLocal');
+
+  video.pause();
+  video.src = '';
+  modal.style.display = 'none';
+}
+
+
+</script>
+
+
+
+
+<!-- MODAL VIDEO LOCAL -->
+<div id="modalVideoLocal" style="
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  z-index:9999;
+  justify-content:center;
+  align-items:center;
+">
+
+  <span onclick="cerrarVideoLocal()" style="
+    position:absolute;
+    top:20px;
+    right:30px;
+    font-size:35px;
+    color:white;
+    cursor:pointer;
+  ">&times;</span>
+
+  <video id="videoLocal"
+    controls
+    autoplay
+    style="
+      width:80%;
+      max-width:900px;
+      max-height:80%;
+      border-radius:12px;
+      box-shadow:0 0 25px black;
+      background:black;
+    ">
+    Tu navegador no soporta video HTML5.
+  </video>
+
+</div>
+
+
+</body>
+</html>
